@@ -12,7 +12,6 @@ export default function App() {
 
   const toggleTodo = (index) => {
     setTodos(todos.map((todo, idx) => idx === index ? { ...todo, complete: !todo.complete } : todo));
-    console.log(todos.map((todo, idx) => idx === index ? { ...todo, complete: !todo.complete } : todo));
   }
 
   const handleInputChange = (e) => {
