@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 import Todo from './todo';
 
 test('renders Todo with text "clean room" that is completed.', async () => {
@@ -30,3 +31,11 @@ test('calls function when clicked', () => {
     fireEvent.click(screen.getByRole('checkbox'))
     expect(props.toggleTodo).toHaveBeenCalledWith(props.index);
 });
+
+
+test('renders the same as the last Snapshot', () => {
+    const tree = renderer
+      .create(<Todo />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
